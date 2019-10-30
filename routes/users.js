@@ -67,8 +67,6 @@ Router.post('/register', (req, res) => {
                                 .then(user => {
                                     req.flash('success_msg', 'You are now registered and can log in..');
                                     res.redirect('/users/login');
-
-                                
                                 })
                                 .catch(err => console.log(err));
                         })
@@ -82,7 +80,7 @@ Router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/dashboard',
         failureRedirect: '/users/login',
-        failureFlash: true // error néven létrehoz egy flash messaget
+        failureFlash: true
     })(req, res, next);
 })
 

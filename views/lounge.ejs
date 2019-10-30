@@ -1,0 +1,22 @@
+<% include partials/head %>
+
+<h1>Lounge</h1>
+
+<% comments.forEach(comment => { %>
+    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">Subject: <%= comment.subject %></div>
+        <div class="card-body">
+          <h4 class="card-title"><%= comment.text %></h4>
+          <p class="card-text"><%= comment.email %></p>
+        </div>
+      </div>
+<% }) %>
+
+<form action="/lounge/saveComment" method="POST">
+    <label for="exampleInputEmail1">Comment:</label>
+    <input  name="subject" class=" mb-2 form-control form-control-sm" type="text" placeholder="Subject">
+    <input name="comment" type="text" class="form-control" placeholder="Type your comment here..">
+    <button class="btn btn-primary mt-1" type="submit">Submit</button>
+</form>
+
+<% include partials/bottom %>

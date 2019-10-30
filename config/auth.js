@@ -1,5 +1,4 @@
 module.exports = {
-    // check if logged in:
     ensureAuthenticated: function( req, res, next) {
         if ( req.isAuthenticated() ) {
             return next();
