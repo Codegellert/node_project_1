@@ -8,10 +8,18 @@ Router.get('/', (req, res) => {
     res.render('welcome', {name : "Gellert"});
 })
 //dashboard
-Router.get('/dashboard', ensureAuthenticated, (req, res) => {
-    res.render('dashboard',{
+Router.get('/home', ensureAuthenticated, (req, res) => {
+    res.render('home',{
         name: req.user.name,
         email: req.user.email
+    } );
+})
+Router.get('/me', ensureAuthenticated, (req, res) => {
+    res.render('me',{
+        name: req.user.name,
+        email: req.user.email,
+        password: req.user.password,
+        fn: req.user.fullName
     } );
 })
 

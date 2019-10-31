@@ -12,6 +12,10 @@ const userSchema = new mongoose.Schema ({
         type: String,
         required: true
     },
+    fullName : {
+        type: String,
+        default: undefined
+    },
     date: {
         type: Date,
         required: true,

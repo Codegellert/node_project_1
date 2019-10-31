@@ -1,13 +1,22 @@
 <% include partials/head %>
-
-<h1>Lounge</h1>
+<% include partials/nav %>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+    <li class="breadcrumb-item active">Lounge</li>
+  </ol>
 
 <% comments.forEach(comment => { %>
-    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-        <div class="card-header">Subject: <%= comment.subject %></div>
+    <div class="card text-white bg-primary mb-3" style="max-width: none;">
+        <div class="card-header pl-5">SUBJECT: <%= comment.subject %></div>
         <div class="card-body">
           <h4 class="card-title"><%= comment.text %></h4>
-          <p class="card-text"><%= comment.email %></p>
+          
+            <% if(comment.email === email) { %>
+              <p class="card-text ml-2">By: Me</p>
+            <% } else {%>
+              <p class="card-text ml-2">By: <%= comment.email %></p>
+            <% } %>
+          
         </div>
       </div>
 <% }) %>
@@ -18,5 +27,7 @@
     <input name="comment" type="text" class="form-control" placeholder="Type your comment here..">
     <button class="btn btn-primary mt-1" type="submit">Submit</button>
 </form>
+
+
 
 <% include partials/bottom %>
