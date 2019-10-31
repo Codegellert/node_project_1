@@ -19,7 +19,13 @@ Router.get('/me', ensureAuthenticated, (req, res) => {
         name: req.user.name,
         email: req.user.email,
         password: req.user.password,
-        fn: req.user.fullName
+    } );
+})
+Router.get('/pricing', ensureAuthenticated, (req, res) => {
+    res.render('pricing',{
+        name: req.user.name,
+        email: req.user.email,
+        password: req.user.password,
     } );
 })
 
