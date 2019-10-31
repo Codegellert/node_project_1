@@ -7,7 +7,9 @@
 <div class="jumbotron">
         <h1 class="display-3">My datas:</h1>
         <hr class="my-4">
-        <h3 class="mb-5">My username: <%= name %></h3>
-        <h3 class="mb-5">My e-mail: <%= email %></h3>
+        <h3 >My username: <%= name %></h3>
+        <form action="/me" method="PUT"><input name="changeName"class=" mr-2 mb-5 w-auto" placeholder="Change my name" type="text"><button class="btn btn-primary" type="submit">Change name</button></form>
+        <h3>My e-mail: <%= email %></h3>
+        <form action="/me" method="PUT"><input name="email" name="changeEmail" class="mr-2 " placeholder="Change my email" type="text"><button class="btn btn-primary" type="submit">Change email</button></form>
 </div>
 <% include partials/bottom %>

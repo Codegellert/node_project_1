@@ -2,6 +2,7 @@ const express = require('express');
 
 const Router = express.Router();
 const { ensureAuthenticated } = require('../config/auth');
+const User = require('../Models/User');
 
 //welcome page
 Router.get('/', (req, res) => {
@@ -27,6 +28,21 @@ Router.get('/pricing', ensureAuthenticated, (req, res) => {
         email: req.user.email,
         password: req.user.password,
     } );
+})
+Router.put('/me', ensureAuthenticated, async (req, res) => {
+    const user = await User.find({email: req.user.email});
+    if (user) {
+        console.log('no user..');
+    }
+    if (req.query.changeName) {
+        user.name = req.query.changeName;
+        console.log('name updated..');
+    }
+    if(req.query.changeEmail) {
+        user.email = req.query.changeEmail;
+        console.log('email updated..');
+    }
+    res.redirect('/me');
 })
 
 
