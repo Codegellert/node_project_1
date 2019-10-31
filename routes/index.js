@@ -29,11 +29,9 @@ Router.get('/pricing', ensureAuthenticated, (req, res) => {
         password: req.user.password,
     } );
 })
-Router.put('/me', ensureAuthenticated, async (req, res) => {
-    const user = await User.find({email: req.user.email});
-    if (user) {
-        console.log('no user..');
-    }
+Router.get('/me', ensureAuthenticated, async (req, res) => {
+    const user = await User.findOne({email: req.user.email});
+    console.log(user);
     if (req.query.changeName) {
         user.name = req.query.changeName;
         console.log('name updated..');
@@ -43,6 +41,7 @@ Router.put('/me', ensureAuthenticated, async (req, res) => {
         console.log('email updated..');
     }
     res.redirect('/me');
+    
 })
 
 
