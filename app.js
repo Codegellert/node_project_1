@@ -50,8 +50,8 @@ app.use((req, res, next) => {
 //Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
-app.use('/lounge', require('./routes/lounge'))
-
+app.use('/lounge', require('./routes/lounge'));
+app.use('/me', require('./routes/me'));
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}...`));
 
 

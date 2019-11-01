@@ -23,6 +23,9 @@
   
 <% comments.forEach(comment => { %>
     <div class="card text-white bg-primary mb-3" style="max-width: none;">
+        <% if(comment.email === email) { %>
+          <form action="/lounge/remove/<%=comment.id%>" method="POST"><button type="submit" class="btn btn-danger w-25 float-right">Remove</button></form>
+        <% }%>
         <div class="card-header pl-5">SUBJECT: <%= comment.subject %></div>
         <div class="card-body">
           <h4 class="card-title"><%= comment.text %></h4>
@@ -38,7 +41,7 @@
 <% }) %>
 
 <form action="/lounge/saveComment" method="POST">
-    <label for="exampleInputEmail1">Comment:</label>
+    <label for="exampleInputEmail1">Write a comment:</label>
       <% if (subject) {%> 
         <input readonly value="<%= subject %>" name="subject" class=" mb-2 form-control form-control-sm" type="text" placeholder="Subject">
       <% } else { %>

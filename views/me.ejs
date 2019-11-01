@@ -8,7 +8,19 @@
         <h1 class="display-3">My datas:</h1>
         <hr class="my-4">
         <h3 >My username: <%= name %></h3>
-        <form action="/me" ><input name="changeName"class=" mr-2 mb-5 w-auto" placeholder="Change my name" type="text"><button class="btn btn-primary" type="submit">Change name</button></form>
+        <form action="/me/change/name"  method="post">
+                <input name="name"class=" mr-2 mb-5 w-auto" placeholder="Change my name" type="text">
+                <button class="btn btn-primary" type="submit">Change name</button>
+        </form>
         <h3>My e-mail: <%= email %></h3>
-        <form action='/me' method="PUT"><input name="email" name="changeEmail" class="mr-2 " placeholder="Change my email" type="text"><button class="btn btn-primary" type="submit">Change email</button></form>
+        <form action='/me/change/email' method="POST">
+                <input name="email" name="changeEmail" class="mr-2 " placeholder="Change my email" type="text">
+                <button class="btn btn-primary" type="submit">Change email</button>
+        </form>
+        <%if(admin == true ) { %>
+                <hr class="my-4">
+                <form action="/me/admin">
+                        <button class="btn btn-primary" type="submit">ENTER ADMIN PAGE</button>
+                </form>
+        <%}%>
 </div>

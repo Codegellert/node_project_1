@@ -15,33 +15,13 @@ Router.get('/home', ensureAuthenticated, (req, res) => {
         email: req.user.email
     } );
 })
-Router.get('/me', ensureAuthenticated, (req, res) => {
-    res.render('me',{
-        name: req.user.name,
-        email: req.user.email,
-        password: req.user.password,
-    } );
-})
+
 Router.get('/pricing', ensureAuthenticated, (req, res) => {
     res.render('pricing',{
         name: req.user.name,
         email: req.user.email,
         password: req.user.password,
     } );
-})
-Router.get('/me', ensureAuthenticated, async (req, res) => {
-    const user = await User.findOne({email: req.user.email});
-    console.log(user);
-    if (req.query.changeName) {
-        user.name = req.query.changeName;
-        console.log('name updated..');
-    }
-    if(req.query.changeEmail) {
-        user.email = req.query.changeEmail;
-        console.log('email updated..');
-    }
-    res.redirect('/me');
-    
 })
 
 

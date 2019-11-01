@@ -55,4 +55,9 @@ Router.post('/saveComment',ensureAuthenticated, (req, res) => {
         .catch(err => console.log(err));
 })
 
+Router.post('/remove/:id',ensureAuthenticated, async (req, res) => {
+    await Comment.remove({_id: req.params.id});
+    res.redirect('/lounge');
+})
+
 module.exports = Router;
