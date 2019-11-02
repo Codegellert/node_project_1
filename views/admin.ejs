@@ -1,0 +1,41 @@
+<h1>admin page</h1>
+
+<h2>Booked weeks:</h2>
+<% books.forEach(book => { %>
+    <p>Name: <%=book.name%></p>
+    <p>Phone: <%=book.phone%></p>
+    <p>Person: <%=book.person%></p>
+    <% book.bookIds.forEach((id, ind) => { %>
+        <p><%=ind%>: <%=id%></p>
+        <%})%>
+<%})%>
+
+
+
+
+
+
+
+
+
+
+<h2>Insert weeks</h2>
+<form method="POST" action="/me/admin/insertAvaibility">
+    <select name="fromMonth">
+        <% months.forEach(month => { %>
+            <option value="<%=month%>"><%=month%></option>
+        <% }) %>
+    </select>
+    <input type="number" name="fromDay" value="1">
+    <br>
+
+    <select name="toMonth">
+        <% months.forEach(month => { %>
+            <option value="<%=month%>"><%=month%></option>
+        <% }) %>
+    </select>
+    <input type="number" name="toDay" value="1">
+    <br>
+
+    <button type="submit">Submit</button>
+</form>
