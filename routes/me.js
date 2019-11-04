@@ -29,39 +29,10 @@ Router.post('/change/:wich', ensureAuthenticated, async (req, res) => {
 
     
 })
-//ADMIN-------------------------------------------
-
-
-let months = [
-    'june',
-    'july',
-    'august'
-]
 
 
 
-Router.get('/admin',ensureAuthenticated, async (req, res ) => {
-    const books = await Book.find();
-    const bookIds = [];
-    books.forEach(book => {
-        bookIds.push(book)
-    })
-    res.render('admin', {
-        months,
-        books
-    });
-})
-Router.post('/admin/insertAvaibility',ensureAuthenticated, async (req, res ) => {
-    const avaibility = new Avaibility({
-        fromMonth: req.body.fromMonth,
-        fromDay: req.body.fromDay,
-        toMonth: req.body.toMonth,
-        toDay: req.body.toDay,
-    });
-    const result = await avaibility.save();
-    console.log(result);
-    res.redirect('/me/admin');
-})
+
     
 
 module.exports = Router;

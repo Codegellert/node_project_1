@@ -55,6 +55,7 @@ app.use('/users', require('./routes/users'));
 app.use('/lounge', require('./routes/lounge'));
 app.use('/me', require('./routes/me'));
 app.use('/book', require('./routes/book'));
+app.use('/me/admin', require('./routes/admin'));
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}...`));
 
 

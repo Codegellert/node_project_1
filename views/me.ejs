@@ -5,6 +5,7 @@
         <li class="breadcrumb-item active">Me</li>
       </ol>
 <div class="jumbotron">
+                
         <h1 class="display-3">My datas:</h1>
         <hr class="my-4">
         <h3 >My username: <%= name %></h3>
@@ -18,7 +19,7 @@
                 <button class="btn btn-primary" type="submit">Change email</button>
         </form>
         
-        <%if(admin == true ) { %>
+        <%if(admin ) { %>
                 <hr class="my-4">
                 <form action="/me/admin">
                         <button class="btn btn-primary" type="submit">ENTER ADMIN PAGE</button>
@@ -31,4 +32,5 @@
         
         
         <%}%>
+        <a href="/users/logout" class="btn btn-secondary mt-5">Logout</a>
 </div>

@@ -9,19 +9,12 @@ Router.get('/', (req, res) => {
     res.render('welcome', {name : "Gellert"});
 })
 //dashboard
-Router.get('/home', ensureAuthenticated, (req, res) => {
-    res.render('home',{
-        name: req.user.name,
-        email: req.user.email
-    } );
+Router.get('/pictures', (req, res) => {
+    res.render('pictures');
 })
 
-Router.get('/pricing', ensureAuthenticated, (req, res) => {
-    res.render('pricing',{
-        name: req.user.name,
-        email: req.user.email,
-        password: req.user.password,
-    } );
+Router.get('/pricing', (req, res) => {
+    res.render('pricing');
 })
 
 

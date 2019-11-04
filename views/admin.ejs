@@ -1,41 +1,79 @@
-<h1>admin page</h1>
+<% include partials/nav %>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item active">Admin page</li>
+  </ol>
 
 <h2>Booked weeks:</h2>
-<% books.forEach(book => { %>
-    <p>Name: <%=book.name%></p>
-    <p>Phone: <%=book.phone%></p>
-    <p>Person: <%=book.person%></p>
-    <% book.bookIds.forEach((id, ind) => { %>
-        <p><%=ind%>: <%=id%></p>
+
+
+<table class="table"> 
+    <thead>
+        <tr>
+          <th scope="col">Books</th>
+          <th scope="col">Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Person</th>
+          <th>Methods</th>
+        </tr>
+      </thead>
+      <% books.forEach(book => { %>
+      <tr class="table-primary">
+        <td scope="row">
+            
+                <table class="table table-hover"> 
+                    <thead>
+                        <tr>
+                          <th scope="col">From</th>
+                          <th scope="col">To</th>
+                          <th scope="col">Available</th>
+                          
+                        </tr>
+                      </thead>
+                    <% book.bookIds.forEach(bookId => {%>
+                      <tr class="table-success">
+                        <td scope="row"><p><%=bookId.fromMonth%> <%=bookId.fromDay%></p></td>
+                        <td><p><%=bookId.toMonth%> <%=bookId.toDay%></p></td>
+                        <td><p><%=bookId.available%></p></td>
+                      </tr>
+                      <%})%>
+                </table>
+            </td>
+        <td> <p><%=book.name%></p> </td>
+        <td><p><%=book.phone%></p></td>
+        <td><p><%=book.persons%></p></td>
+        <td>
+            <form action="/me/admin/remove/<%=book._id%>" method="POST">
+                <button class="btn btn-danger">Remove</button>
+            </form>
+            <form action="/me/admin/reserve/<%=book._id%>" class="mt-2" method="POST">
+                    <button class="btn btn-success">Reserve</button>
+            </form>
+            
+        </td>
+        
         <%})%>
-<%})%>
 
-
-
-
-
-
-
+</table>
 
 
 
 <h2>Insert weeks</h2>
 <form method="POST" action="/me/admin/insertAvaibility">
-    <select name="fromMonth">
+    <select class="custom-select mb-1" name="fromMonth">
         <% months.forEach(month => { %>
             <option value="<%=month%>"><%=month%></option>
         <% }) %>
     </select>
-    <input type="number" name="fromDay" value="1">
+    <input class="form-control" type="number" name="fromDay" value="1">
     <br>
 
-    <select name="toMonth">
+    <select class="custom-select mb-1" name="toMonth">
         <% months.forEach(month => { %>
             <option value="<%=month%>"><%=month%></option>
         <% }) %>
     </select>
-    <input type="number" name="toDay" value="1">
-    <br>
+    <input class="form-control" type="number" name="toDay" value="1">
 
-    <button type="submit">Submit</button>
+    <button class="btn btn-primary mt-2" type="submit">Submit</button>
 </form>

@@ -1,0 +1,108 @@
+
+<% include partials/nav %>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item active">Book</li>
+  </ol>
+
+  <% include partials/messages %>
+
+<%if(basket.length > 0) {%>
+<div class="jumbotron">
+    <h1>Basket:</h1>
+    <small class="form-text text-muted">You can modify the basket abow this form..</small>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+            </tr>
+        </thead>
+        <%basket.forEach(elem => {%>
+            <tr class="table-success">
+                <td scope="row"> <span class="badge badge-secondary p-2"><%= elem.fromMonth %></span> <span class="badge badge-dark p-2"> <%= elem.fromDay %></th>
+                <td><span class="badge badge-secondary p-2"><%= elem.toMonth %></span> <span class="badge badge-dark p-2"> <%= elem.toDay %></td>
+            </tr>
+    
+        
+            <%})%>
+        </table>
+            
+            <form class="mb-5" action="/book/final" method="POST">
+                <div class="form-group">
+                    <label class="col-form-label" for="basketPhone">Phone number:</label>
+                    <input required type="text" name="phone" class="form-control" placeholder="+36 .." id="basketPhone">
+                    <small class="form-text text-muted">We will call you on this phone-number</small>
+                </div>
+                <div class="form-group">
+                        <label class="col-form-label" for="basketPerson">Persons:</label>
+                        <input required type="number" name="person" class="form-control" placeholder="Max 6 person" id="basketPerson">
+                    </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="basketEmail">Email:</label>
+                    <input required type="email" name="email" value="<%=email%>" readonly class="form-control" id="basketName">
+                    <small class="form-text text-muted">You can change it on page 'Me'</small>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="basketName">Fullname:</label>
+                    <input required type="text" name="name" value="<%=name%>" readonly class="form-control" id="basketName">
+                    <small class="form-text text-muted">You can change it on page 'Me'</small>
+                </div>
+                
+                <p>The landlord will call you in a few days..</p>
+                <button type="submit" class="btn btn-primary">Send!</button>
+    
+    </form>
+</div>
+<h2>you can modify the below..</h2>
+<%}%>
+
+<%let allUnavailabled = true%>
+<%availables.forEach(available => {%>
+
+    <%if(available.available){%>
+        <%allUnavailabled = false%>
+    <%}%>
+<%})%>
+<%if (availables.length != 0 && !allUnavailabled) {%>
+    
+<form action="/book" method="POST">
+    <table class="table table-hover"> 
+        <thead>
+            <tr>
+              <th scope="col">From</th>
+              <th scope="col">To</th>
+              <th  scope="col">Check</th>
+            </tr>
+          </thead>
+          <%availables.forEach(elem => {%>
+            <%if(elem.available) {%>
+          <tr class="table-primary">
+            <td scope="row"><span class="badge badge-secondary p-2"><%= elem.fromMonth %></span> <span class="badge badge-dark p-2"> <%= elem.fromDay %></span> </th>
+            <td><span class="badge badge-secondary p-2"><%= elem.toMonth %></span> <span class="badge badge-dark p-2">  <%= elem.toDay %></span></td>
+            <td>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input <% if(elem.pending){ %> disabled <%}%>  type="checkbox"  class="custom-control-input" name="bookId" value="<%= elem._id%>" id="<%= elem._id%>" >
+                        <label class="custom-control-label" for="<%= elem._id%>" ><%if(!elem.pending){%>Check if you'd book it.<%}else{%> This week is pending, choose another..<%}%></label>
+                      </div>
+                      
+                </div>
+            </td>
+          </tr>
+          <%}%>
+          <%})%>
+    </table>
+
+    <button  class="btn btn-primary btn-lg btn-block mb-5"type="submit"><%if(basket.length == 0) {%>Book!<%}else{%> Change the basket! <%}%></button>
+
+
+</form>
+
+<%} else {%>
+    
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4 class="alert-heading">Attention!</h4>
+        <p class="mb-0">Currently booking is diasbled for some reason..</p>    </div>
+<%}%>
