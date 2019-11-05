@@ -2,27 +2,27 @@
 <% include partials/nav %>
 <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/home">Home</a></li>
-        <li class="breadcrumb-item active">Me</li>
+        <li class="breadcrumb-item active">Én</li>
       </ol>
 <div class="jumbotron">
                 
-        <h1 class="display-3">My datas:</h1>
+        <h1 class="display-3">Adataim:</h1>
         <hr class="my-4">
-        <h3 >My username: <%= name %></h3>
-        <form action="/me/change/name"  method="post">
-                <input name="name"class=" mr-2 mb-5 w-auto" placeholder="Change my name" type="text">
-                <button class="btn btn-primary" type="submit">Change name</button>
+        <h3 >Teljes nevem: <%= name %></h3>
+        <form action="/me/change/name" class="mb-5"  method="post">
+                <input name="name" class="form-control mr-2 mb-2 w-auto" placeholder="Név megváltoztatása" type="text">
+                <button class="btn btn-primary" type="submit">Megváltoztatás</button>
         </form>
-        <h3>My e-mail: <%= email %></h3>
+        <h3>E-mail: <%= email %></h3>
         <form action='/me/change/email' method="POST">
-                <input name="email" name="changeEmail" class="mr-2 " placeholder="Change my email" type="text">
-                <button class="btn btn-primary" type="submit">Change email</button>
+                <input name="email"  class="form-control mb-2 w-auto" placeholder="E-mail megváltoztatása" type="text">
+                <button class="btn btn-primary" type="submit">Megváltoztatás</button>
         </form>
         
         <%if(admin ) { %>
                 <hr class="my-4">
                 <form action="/me/admin">
-                        <button class="btn btn-primary" type="submit">ENTER ADMIN PAGE</button>
+                        <button class="btn btn-primary" type="submit">Admin módba lépés</button>
                 </form>
         
         
@@ -32,5 +32,5 @@
         
         
         <%}%>
-        <a href="/users/logout" class="btn btn-secondary mt-5">Logout</a>
+        <a href="/users/logout" class="btn btn-secondary mt-5">Kijelentkezés</a>
 </div>

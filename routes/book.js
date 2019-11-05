@@ -12,11 +12,11 @@ function basketInvalid(phone, person, req) {
     let invalid = false;
     if (phone.length < 5 || phone.length > 15) {
         
-        req.flash('error_msg_basketPhone', 'Invalid phone-number. Try again..')
+        req.flash('error_msg_basketPhone', 'Hibás telefonszám, Próbálja újra..')
         invalid = true;
     }
     if (person > 6 || person < 1) {
-        req.flash('error_msg_basketPerson', 'Persons must be between 1 and 6. Try again..');
+        req.flash('error_msg_basketPerson', 'Maximum 6 személy, Minimum 1. Próbálja újra');
         invalid = true;
     }
     return invalid;

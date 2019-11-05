@@ -13,7 +13,6 @@ Router.get('/',ensureAuthenticated, async (req, res) => {
                 subjects.push(comment.subject);
             }
         });
-        console.log(subjects);
         res.render('lounge', {
             name: req.user.name,
             email: req.user.email,

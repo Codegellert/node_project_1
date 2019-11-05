@@ -7,16 +7,16 @@
 
 <form action="/lounge" method="Get">
   <div class="form-group">
-    <label for="exampleSelect1">List comments with a specified subject:</label>
+    <label for="exampleSelect1">Tárgy szerinti listázás</label>
     <select name="subject" class="form-control">
 
-      <option selected value="" >Choose a subject..</option>
+      <option selected value="" >-- Összes --</option>
 
       <% subjects.forEach(subject => { %>
         <option value="<%=subject%>" > <%=subject%> </option>
         <%})%>
     </select>
-    <button class="btn btn-primary mt-2" type="submit">List them..</button>
+    <button class="btn btn-primary mt-2" type="submit">Listázás</button>
   </div>
 
 </form>
@@ -26,14 +26,14 @@
         <% if(comment.email === email) { %>
           <form action="/lounge/remove/<%=comment.id%>" method="POST"><button type="submit" class="btn btn-danger w-25 float-right">Remove</button></form>
         <% }%>
-        <div class="card-header pl-5">SUBJECT: <%= comment.subject %></div>
+        <div class="card-header pl-5">Tárgy: <%= comment.subject %></div>
         <div class="card-body">
           <h4 class="card-title"><%= comment.text %></h4>
           
             <% if(comment.email === email) { %>
-              <p class="card-text ml-2">By: Me</p>
+              <p class="card-text ml-2">Megosztotta: Én</p>
             <% } else {%>
-              <p class="card-text ml-2">By: <%= comment.email %></p>
+              <p class="card-text ml-2">Megosztotta: <%= comment.email %></p>
             <% } %>
           
         </div>
@@ -41,12 +41,12 @@
 <% }) %>
 
 <form action="/lounge/saveComment" method="POST">
-    <label for="exampleInputEmail1">Write a comment:</label>
+    <label for="exampleInputEmail1">Értékelje az apartmant!</label>
       <% if (subject) {%> 
-        <input readonly value="<%= subject %>" name="subject" class=" mb-2 form-control form-control-sm" type="text" placeholder="Subject">
+        <input readonly value="<%= subject %>" name="subject" class=" mb-2 form-control form-control-sm" type="text" placeholder="Tárgy">
       <% } else { %>
-        <input value="" name="subject" class=" mb-2 form-control form-control-sm" type="text" placeholder="Subject">
+        <input value="" name="subject" class=" mb-2 form-control form-control-sm" type="text" placeholder="Tárgy">
         <% } %>
-    <input name="comment" type="text" class="form-control" placeholder="Type your comment here..">
+    <input name="comment" type="text" class="form-control" placeholder="Komment szövege">
     <button class="btn btn-primary mt-1" type="submit">Submit</button>
 </form>

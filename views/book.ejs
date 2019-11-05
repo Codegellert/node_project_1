@@ -9,13 +9,13 @@
 
 <%if(basket.length > 0) {%>
 <div class="jumbotron">
-    <h1>Basket:</h1>
-    <small class="form-text text-muted">You can modify the basket abow this form..</small>
+    <h1>Kosár:</h1>
+    <small class="form-text text-muted">Megváltoztathatod a heteket a kosár alatt..</small>
     <table class="table table-hover">
         <thead>
             <tr>
-                <th scope="col">From</th>
-                <th scope="col">To</th>
+                <th scope="col">Tól</th>
+                <th scope="col">Ig</th>
             </tr>
         </thead>
         <%basket.forEach(elem => {%>
@@ -30,31 +30,31 @@
             
             <form class="mb-5" action="/book/final" method="POST">
                 <div class="form-group">
-                    <label class="col-form-label" for="basketPhone">Phone number:</label>
+                    <label class="col-form-label" for="basketPhone">Telefonszám:</label>
                     <input required type="text" name="phone" class="form-control" placeholder="+36 .." id="basketPhone">
-                    <small class="form-text text-muted">We will call you on this phone-number</small>
+                    <small class="form-text text-muted">Ezen a számon fogunk hívni..</small>
                 </div>
                 <div class="form-group">
-                        <label class="col-form-label" for="basketPerson">Persons:</label>
-                        <input required type="number" name="person" class="form-control" placeholder="Max 6 person" id="basketPerson">
+                        <label class="col-form-label" for="basketPerson">Személyek száma:</label>
+                        <input required type="number" name="person" class="form-control" placeholder="Max 6" id="basketPerson">
                     </div>
                 <div class="form-group">
                     <label class="col-form-label" for="basketEmail">Email:</label>
                     <input required type="email" name="email" value="<%=email%>" readonly class="form-control" id="basketName">
-                    <small class="form-text text-muted">You can change it on page 'Me'</small>
+                    <small class="form-text text-muted">Megváltoztathatja az 'Én' oldalon..</small>
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="basketName">Fullname:</label>
                     <input required type="text" name="name" value="<%=name%>" readonly class="form-control" id="basketName">
-                    <small class="form-text text-muted">You can change it on page 'Me'</small>
+                    <small class="form-text text-muted">Megváltoztathatja az 'Én' oldalon..</small>
                 </div>
                 
-                <p>The landlord will call you in a few days..</p>
-                <button type="submit" class="btn btn-primary">Send!</button>
+                <p>A házigazda kis időn belül keresi Önt a telefonszámon... </p>
+                <button type="submit" class="btn btn-primary">Véglegesítés</button>
     
     </form>
 </div>
-<h2>you can modify the below..</h2>
+<h2>Megváltoztathatod ez alatt</h2>
 <%}%>
 
 <%let allUnavailabled = true%>
@@ -70,21 +70,30 @@
     <table class="table table-hover"> 
         <thead>
             <tr>
-              <th scope="col">From</th>
-              <th scope="col">To</th>
-              <th  scope="col">Check</th>
+              <th scope="col">Érkezés</th>
+              <th scope="col">távozás</th>
+              <th  scope="col">Választás</th>
             </tr>
           </thead>
           <%availables.forEach(elem => {%>
             <%if(elem.available) {%>
-          <tr class="table-primary">
+          <tr
+          data-aos="fade-up"
+data-aos-offset="-200"
+data-aos-delay="0"
+data-aos-duration="1000"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true"
+data-aos-anchor-placement="top-center"
+          class="table-primary">
             <td scope="row"><span class="badge badge-secondary p-2"><%= elem.fromMonth %></span> <span class="badge badge-dark p-2"> <%= elem.fromDay %></span> </th>
             <td><span class="badge badge-secondary p-2"><%= elem.toMonth %></span> <span class="badge badge-dark p-2">  <%= elem.toDay %></span></td>
             <td>
                 <div class="form-group">
                     <div class="custom-control custom-checkbox">
                         <input <% if(elem.pending){ %> disabled <%}%>  type="checkbox"  class="custom-control-input" name="bookId" value="<%= elem._id%>" id="<%= elem._id%>" >
-                        <label class="custom-control-label" for="<%= elem._id%>" ><%if(!elem.pending){%>Check if you'd book it.<%}else{%> This week is pending, choose another..<%}%></label>
+                        <label class="custom-control-label" for="<%= elem._id%>" ><%if(!elem.pending){%>Válaszd ki, ha érdekel.<%}else{%>Ezt a hetet már lefoglalták.<%}%></label>
                       </div>
                       
                 </div>
@@ -94,7 +103,7 @@
           <%})%>
     </table>
 
-    <button  class="btn btn-primary btn-lg btn-block mb-5"type="submit"><%if(basket.length == 0) {%>Book!<%}else{%> Change the basket! <%}%></button>
+    <button  class="btn btn-primary btn-lg btn-block mb-5"type="submit"><%if(basket.length == 0) {%>Foglalás<%}else{%> Kosár változtatása <%}%></button>
 
 
 </form>

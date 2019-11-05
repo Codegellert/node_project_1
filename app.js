@@ -5,7 +5,9 @@ const express = require('express'),
         flash = require('connect-flash'),
         session = require('express-session')
         passport = require('passport')
-        methodOverride = require('method-override');
+        methodOverride = require('method-override')
+        compression = require('compression'),
+        helmet = require('helmet');
 
 //passport config
 require('./config/passport')(passport);
@@ -55,7 +57,11 @@ app.use('/users', require('./routes/users'));
 app.use('/lounge', require('./routes/lounge'));
 app.use('/me', require('./routes/me'));
 app.use('/book', require('./routes/book'));
+app.use('/pictures', require('./routes/pictures'));
 app.use('/me/admin', require('./routes/admin'));
+app.use(express.static('house_pictures'));
+app.use(helmet());
+app.use(compression());
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}...`));
 
 
