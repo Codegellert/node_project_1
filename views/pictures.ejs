@@ -1,109 +1,37 @@
-<%include partials/nav%>
+<% include partials/nav %>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item active">Képek</li>
+  </ol>
 
-<!-- Grid row -->
-<div class="row">
-    <!-- Grid column -->
-    <div class="col-lg-4 col-md-12 mb-4">
-      <!--Modal: Name-->
-      <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-          <!--Content-->
-          <div class="modal-content">
-            <!--Body-->
-            <div class="modal-body mb-0 p-0">
-                <img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-1.jpg" alt="video"
-                data-toggle="modal" data-target="#modal1">
-            </div>
+  <link rel="stylesheet" href="css/style.css">
+
+      <section id="picture_viewer">
+              <img id="arrow_right" src="./icons/arrow.png">
+              <img id="arrow_left" src="./icons/arrow.png">
+          <img id="picture_viewer_close_button" src="./icons/close.png" >
+          <img src="" id="picture_viewer_image">
+      </section>
   
-            <!--Footer-->
-            <div class="modal-footer justify-content-center">
-              <p>Konyha</p>
-            </div>
-  
-          </div>
-          <!--/.Content-->
-  
-        </div>
-      </div>
-      <!--Modal: Name-->
-  
-      <a><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-1.jpg" alt="video"
-          data-toggle="modal" data-target="#modal1"></a>
-  
-    </div>
-    <!-- Grid column -->
-  
-    <!-- Grid column -->
-    <div class="col-lg-4 col-md-6 mb-4">
-  
-      <!--Modal: Name-->
-      <div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-  
-          <!--Content-->
-          <div class="modal-content">
-  
-            <!--Body-->
-            <div class="modal-body mb-0 p-0">
-  
-              
-                <img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-1.jpg" alt="video"
-                data-toggle="modal" data-target="#modal1">
-             
-  
-            </div>
-  
-            <!--Footer-->
-            <div class="modal-footer justify-content-center">
-                <p>asdasd</p>
-            </div>
-  
-          </div>
-          <!--/.Content-->
-  
-        </div>
-      </div>
-      <!--Modal: Name-->
-  
-      <a><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-2.jpg" alt="video"
-          data-toggle="modal" data-target="#modal6"></a>
-  
-    </div>
-    <!-- Grid column -->
-     <!-- Grid column -->
-     <div class="col-lg-4 col-md-6 mb-4">
-  
-            <!--Modal: Name-->
-            <div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg" role="document">
-        
-                <!--Content-->
-                <div class="modal-content">
-        
-                  <!--Body-->
-                  <div class="modal-body mb-0 p-0">
-        
-                    
-                      <img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-1.jpg" alt="video"
-                      data-toggle="modal" data-target="#modal1">
-                   
-        
-                  </div>
-        
-                  <!--Footer-->
-                  <div class="modal-footer justify-content-center">
-                      <p>asdasd</p>
-                  </div>
-        
-                </div>
-                <!--/.Content-->
-        
+      <section class="container" id="picture_container">
+          <div class="row mb-3">
+
+          <%for (let i = 1; i<19; i++) {%>
+            <%if (i % 3 == 0){%>
+              <img class="col-lg-4" src="<%=i%>.jpg">
               </div>
-            </div>
-            <!--Modal: Name-->
-        
-            <a><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-2.jpg" alt="video"
-                data-toggle="modal" data-target="#modal6"></a>
-        
-          </div>
-          <!-- Grid column -->
+              <div class="row mb-3">
+            <%}else if (i % 4 == 0){%>
+              
+              <img class="col-lg-4" src="<%=i%>.jpg">
+            <%}else{%>
+              <img class="col-lg-4" src="<%=i%>.jpg">
+              <%}%>
+          <%}%>
+          
+      </section>
+
+     
+
+      
+      

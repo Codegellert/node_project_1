@@ -8,7 +8,7 @@ const express = require('express'),
 
 
 
-Router.get('', (req,res) => {
+Router.get('/', (req,res) => {
     res.render('pictures');
 })
 
