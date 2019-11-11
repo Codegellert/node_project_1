@@ -15,6 +15,8 @@ let months = [
 Router.get('/',ensureAuthenticated, async (req, res ) => {
     const books = await Book.find().populate('bookIds');
     res.render('admin', {
+        name: req.user.name,
+        email: req.user.email,
         months,
         books
     });

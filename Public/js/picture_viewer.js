@@ -10,12 +10,12 @@ closeButton.on('click', () => {
 } )
 
 
-/*pictureViewerImage.click(() => {
+pictureViewerImage.click(() => {
     let newSrc = $('.active_image').next().attr('src');
     pictureViewerImage.attr('src', newSrc);
     $('.active_image').next().attr('class', 'active_image');
     $('.active_image').attr('class', '');
-})*/
+})
 var i = 0;
 
 pictureContainerImage.click( (e) => {
@@ -30,10 +30,8 @@ pictureContainerImage.click( (e) => {
 arrowRight.click(() => {
     if(i == pictureContainerImage.length - 1) {
         i = 0;
-        console.log(i);
     }else {
         i++;
-        console.log(i)
     }
     newSrc = pictureContainerImage.eq(i).attr('src');
     pictureViewerImage.attr('src', newSrc);

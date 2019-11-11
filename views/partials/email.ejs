@@ -1,0 +1,35 @@
+<div class="jumbotron animated bounceInLeft">
+    <div class="company-info">
+      <h3>Kapcsolat: </h3>
+      <ul>
+        <li><i class="fa fa-road"></i> 8624 Balatonszárszó Rónay György utca 18.</li>
+        <li><i class="fa fa-phone"></i> +36307982133</li>
+        <li><i class="fa fa-envelope"></i> gellertpuskas@gmail.com</li>
+      </ul>
+    </div>
+    <div class="contact">
+      <h3>Küldjön emailt:</h3>
+      <form method="POST" action="/contact/send-mail">
+          <div class="form-group">
+              <label class="col-form-label">Name</label>
+              <input name="name" readonly value="<%=name%>" type="text" class="form-control" placeholder="Enter name">
+          </div>
+          <div class="form-group">
+              <label class="col-form-label" for="inputDefault">Email:</label>
+              <input name="email" readonly value="<%=email%>" type="email" class="form-control" placeholder="email" >
+          </div>
+          <div class="form-group">
+              <label class="col-form-label" for="inputDefault">Tárgy:</label>
+              <input name="subject" type="text" class="form-control" placeholder="Tárgy..." >
+          </div>
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Telefonszám:</label>
+            <input name="phone" type="text" class="form-control" placeholder="Telefonszám..." >
+        </div>
+          <div class="form-group">
+              <label >Szöveg..</label>
+              <textarea name="message" placeholder="Tisztelt Géza!.." class="form-control"  rows="3"></textarea>
+          </div>
+          <button  class="btn btn-primary ">Küld</button>
+    </div>
+  </div>

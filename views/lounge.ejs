@@ -22,7 +22,7 @@
 </form>
   
 <% comments.forEach(comment => { %>
-    <div class="card text-white bg-primary mb-3" style="max-width: none;">
+    <div class="card text-white bg-primary mb-3 animated bounceInRight" style="max-width: none;">
         <% if(comment.email === email) { %>
           <form action="/lounge/remove/<%=comment.id%>" method="POST"><button type="submit" class="btn btn-danger w-25 float-right">Remove</button></form>
         <% }%>

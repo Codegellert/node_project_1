@@ -7,16 +7,12 @@ const User = require('../Models/User');
 //welcome page
 
 //dashboard
-Router.get('/home', (req, res) => {
-    res.render('home');
-})
 Router.get('/', (req, res) => {
-    res.render('login');
+    res.render('home');
 })
 Router.get('/services', (req, res) => {
     res.render('services');
 })
-
 
 
 

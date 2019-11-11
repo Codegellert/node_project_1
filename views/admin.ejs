@@ -1,20 +1,20 @@
 <% include partials/nav %>
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/home">Home</a></li>
-    <li class="breadcrumb-item active">Admin page</li>
+    <li class="breadcrumb-item"><a href="/home">Otthon</a></li>
+    <li class="breadcrumb-item active">Admin oldal</li>
   </ol>
 
-<h2>Booked weeks:</h2>
+<h2>Foglalt hetek:</h2>
 
 
 <table class="table"> 
     <thead>
         <tr>
-          <th scope="col">Books</th>
-          <th scope="col">Name</th>
-          <th scope="col">Phone</th>
-          <th scope="col">Person</th>
-          <th>Methods</th>
+          <th scope="col">Foglalások</th>
+          <th scope="col">Név</th>
+          <th scope="col">Telefon</th>
+          <th scope="col">Személy</th>
+          <th>Lehetőségek</th>
         </tr>
       </thead>
       <% books.forEach(book => { %>
@@ -24,9 +24,9 @@
                 <table class="table table-hover"> 
                     <thead>
                         <tr>
-                          <th scope="col">From</th>
-                          <th scope="col">To</th>
-                          <th scope="col">Available</th>
+                          <th scope="col">Beköltözés</th>
+                          <th scope="col">Elhagyás</th>
+                          <th scope="col">Foglalható</th>
                           
                         </tr>
                       </thead>
@@ -34,7 +34,13 @@
                       <tr class="table-success">
                         <td scope="row"><p><%=bookId.fromMonth%> <%=bookId.fromDay%></p></td>
                         <td><p><%=bookId.toMonth%> <%=bookId.toDay%></p></td>
-                        <td><p><%=bookId.available%></p></td>
+                        <td><p>
+                          <%if (bookId.available) {%>
+                            Igen
+                          <%}else {%>
+                          Nem 
+                          <%}%>
+                          </p></td>
                       </tr>
                       <%})%>
                 </table>
@@ -44,10 +50,10 @@
         <td><p><%=book.persons%></p></td>
         <td>
             <form action="/me/admin/remove/<%=book._id%>" method="POST">
-                <button class="btn btn-danger">Remove</button>
+                <button class="btn btn-danger">Törlés</button>
             </form>
             <form action="/me/admin/reserve/<%=book._id%>" class="mt-2" method="POST">
-                    <button class="btn btn-success">Reserve</button>
+                    <button class="btn btn-success">Véglegesít</button>
             </form>
             
         </td>
@@ -57,23 +63,55 @@
 </table>
 
 
+<div class="jumbotron ">
+  <h2>Szabad hetek hozzáadása</h2>
+  <form method="POST" action="/me/admin/insertAvaibility">
+      <select class="custom-select mb-1" name="fromMonth">
+          <% months.forEach(month => { %>
+              <option value="<%=month%>"><%=month%></option>
+          <% }) %>
+      </select>
+      <input class="form-control" type="number" name="fromDay" value="1">
+      <br>
+  
+      <select class="custom-select mb-1" name="toMonth">
+          <% months.forEach(month => { %>
+              <option value="<%=month%>"><%=month%></option>
+          <% }) %>
+      </select>
+      <input class="form-control" type="number" name="toDay" value="1">
+  
+      <button class="btn btn-primary mt-2" type="submit">Submit</button>
+  </form>
+</div>
 
-<h2>Insert weeks</h2>
-<form method="POST" action="/me/admin/insertAvaibility">
-    <select class="custom-select mb-1" name="fromMonth">
-        <% months.forEach(month => { %>
-            <option value="<%=month%>"><%=month%></option>
-        <% }) %>
-    </select>
-    <input class="form-control" type="number" name="fromDay" value="1">
-    <br>
 
-    <select class="custom-select mb-1" name="toMonth">
-        <% months.forEach(month => { %>
-            <option value="<%=month%>"><%=month%></option>
-        <% }) %>
-    </select>
-    <input class="form-control" type="number" name="toDay" value="1">
+<h1>Körlevél:</h1>
 
-    <button class="btn btn-primary mt-2" type="submit">Submit</button>
-</form>
+
+<div class="jumbotron ">
+  <div class="contact">
+    <form method="POST" action="/contact/send-circular">
+        <div class="form-group">
+            <label class="col-form-label">Name</label>
+            <input name="name" readonly value="<%=name%>(Házigazda)" type="text" class="form-control" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Email:</label>
+            <input name="email" readonly value="<%=email%>" type="email" class="form-control" placeholder="email" >
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Tárgy:</label>
+            <input name="subject" type="text" class="form-control" placeholder="Tárgy..." >
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Telefonszám:</label>
+          <input name="phone" type="text" class="form-control" placeholder="Telefonszám..." >
+      </div>
+        <div class="form-group">
+            <label >Szöveg..</label>
+            <textarea name="message" placeholder="Üzenet.." class="form-control"  rows="3"></textarea>
+        </div>
+        <button  class="btn btn-primary ">Küld</button>
+  </div>
+</div>

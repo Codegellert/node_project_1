@@ -14,20 +14,13 @@
       </section>
   
       <section class="container" id="picture_container">
-          <div class="row mb-3">
-
-          <%for (let i = 1; i<19; i++) {%>
-            <%if (i % 3 == 0){%>
-              <img class="col-lg-4" src="<%=i%>.jpg">
-              </div>
-              <div class="row mb-3">
-            <%}else if (i % 4 == 0){%>
-              
-              <img class="col-lg-4" src="<%=i%>.jpg">
-            <%}else{%>
-              <img class="col-lg-4" src="<%=i%>.jpg">
-              <%}%>
-          <%}%>
+          <!-- <div class="row mb-3"> -->
+            <div class="row">
+              <%for (let i = 1; i < 19; i++) {%>
+                <img class="col-md-4 mb-2" src="<%=i%>.jpg">
+            <%}%>
+            </div>
+          
           
       </section>
 

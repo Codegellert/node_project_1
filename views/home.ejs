@@ -3,15 +3,7 @@
     <li class="breadcrumb-item active">Home</li>
   </ol>
 <div
-data-aos="zoom-in"
-data-aos-offset="10"
-data-aos-delay="0"
-data-aos-duration="1000"
-data-aos-easing="ease-in-out"
-data-aos-mirror="true"
-data-aos-once="false"
-data-aos-anchor-placement="top-center"
-id="carousel-example-2" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
+id="carousel-example-2" class="carousel slide carousel-fade z-depth-1-half animated bounceInRight" data-ride="carousel">
         <!--Indicators-->
         <ol class="carousel-indicators">
           <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
@@ -61,15 +53,8 @@ id="carousel-example-2" class="carousel slide carousel-fade z-depth-1-half" data
 
 
 <div 
-data-aos="fade-up"
-data-aos-offset="10"
-data-aos-delay="0"
-data-aos-duration="1000"
-data-aos-easing="ease-in-out"
-data-aos-mirror="true"
-data-aos-once="true"
-data-aos-anchor-placement="top-center"
-class="jumbotron">
+
+class="jumbotron animated bounceInLeft">
   <h1 >Üdvözöljük a Pelso Porta honlapján!</h1>
   <p>Balatonszárszón a Balatontól 200 méterre igényesen berendezett, modern apartmanunkba várjuk a pihenni vágyó családokat, több családos baráti társaságokat minden nyáron. A parkosított kert, a terasz nyújtotta kényelem fokozzák a balatoni élményt</p>
 </div>
@@ -124,4 +109,51 @@ class="jumbotron">
   </p>
       <p>      Az igényességet mutatják a visszajelzések is a kedvesebbnél kedvesebb családoktól, akik már igénybe vették a házat.
         </p>
+</div>
+
+
+<div
+data-aos="fade-right"
+data-aos-offset="10"
+data-aos-delay="0"
+data-aos-duration="1000"
+data-aos-easing="ease-in-out"
+data-aos-mirror="true"
+data-aos-once="true"
+data-aos-anchor-placement="top-center"
+
+class="jumbotron">
+  <div class="company-info">
+    <h3>Kapcsolat: </h3>
+    <ul>
+      <li><i class="fa fa-road"></i> 8624 Balatonszárszó Rónay György utca 18.</li>
+      <li><i class="fa fa-phone"></i> +36307982133</li>
+      <li><i class="fa fa-envelope"></i> gellertpuskas@gmail.com</li>
+    </ul>
+  </div>
+  <div class="contact">
+    <h3>Küldjön emailt:</h3>
+    <form method="POST" action="/contact/send-mail">
+        <div class="form-group">
+            <label class="col-form-label">Name</label>
+            <input name="name"  type="text" class="form-control" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Email:</label>
+            <input name="email" type="email" class="form-control" placeholder="email" >
+        </div>
+        <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Tárgy:</label>
+            <input name="subject" type="text" class="form-control" placeholder="Tárgy..." >
+        </div>
+        <div class="form-group">
+          <label class="col-form-label" for="inputDefault">Telefonszám:</label>
+          <input name="phone" type="text" class="form-control" placeholder="Telefonszám..." >
+      </div>
+        <div class="form-group">
+            <label >Szöveg..</label>
+            <textarea name="message" placeholder="Tisztelt Géza!.." class="form-control"  rows="3"></textarea>
+        </div>
+        <button  class="btn btn-primary ">Küld</button>
+  </div>
 </div>

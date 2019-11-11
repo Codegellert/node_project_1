@@ -50,18 +50,25 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 })
+//Static Routes
+app.use('/pictures',express.static('public/house_pictures'));
+app.use('/',express.static('public/house_pictures'));
+app.use('/',express.static('public/'));
+app.use('/pictures',express.static('public'));
+app.use('/contact',express.static('public'));
 
 //Routes
-app.use('/pictures',express.static('house_pictures'));
-app.use('/pictures',express.static('Public'));
-app.use('/home',express.static('house_pictures'));
+
+
+
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/lounge', require('./routes/lounge'));
 app.use('/me', require('./routes/me'));
+app.use('/me/admin', require('./routes/admin'));
 app.use('/book', require('./routes/book'));
 app.use('/pictures', require('./routes/pictures'));
-app.use('/me/admin', require('./routes/admin'));
+app.use('/contact', require('./routes/contact'));
 
 app.use(helmet());
 app.use(compression());
